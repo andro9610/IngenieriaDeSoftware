@@ -82,7 +82,7 @@ h2{
     margin-top: 10%;
 }
 
-#botonSiguiente{
+button{
     position: relative;
     left: 35%;
     margin-top: 3%;
@@ -98,4 +98,19 @@ h2{
     background-color: rgb(0, 99, 92);
     color: rgb(223,223,223);
     border-radius: 3%;
+}
+
+.botonSeleccion{
+    position: relative;
+    left: 0%;
+    margin-top: 5%;
+    margin-left: 2.5%;
+    padding-top: 15%;
+    /*Modificar el tamaño*/
+    height: 45%;
+
+}
+
+#botonConsulta{
+    background-image: "../";
 }

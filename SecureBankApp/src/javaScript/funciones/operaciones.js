@@ -145,7 +145,8 @@ function consultarSaldo( numeroTarjeta, claveActual){
 }
 
 //LISTO
-function validarTarjeta(numeroTarjeta){
+function validarTarjeta(){
+  let numeroTarjeta = document.getElementById('campoNumero').value;
   conexion.connect(
     function(err){
       conexion.query(
@@ -154,7 +155,7 @@ function validarTarjeta(numeroTarjeta){
           if(result[0].INTENTOS == 0 ){
             bloquearTarjeta(numeroTarjeta);
           }else{
-            console.log('seleccione su operacion'); //impresion seleccionOperacion
+            escribirPantallaSeleccion();//impresion seleccionOperacion
             conexion.end();
           }
         }
