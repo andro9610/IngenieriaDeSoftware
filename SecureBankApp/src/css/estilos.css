@@ -6,11 +6,12 @@ body{
     font-size: 150%;
 }
 
+/*Elementos de la pagina*/
 #encabezado{
     /** Fondo */
     background-color: rgb(0, 99, 92);
     margin-top: 0%;
-    position: float;
+    position: absolute;
     width: 1366px;
     height: 100px;
     /** Texto */
@@ -22,8 +23,8 @@ body{
 #navegacionLateral{
     /** Fondo */
     margin-top: -34px;
-    position: float;
-    align-content: left;
+    position: absolute;
+    top: 65px;
     background-color: rgb(26, 26, 26);
     margin-top: 0%;
     width: 250px;
@@ -39,9 +40,62 @@ body{
 }
 
 #contenido{
-    position: float;
-    align-content: right;
-    background-color: rgb(223,0,223);
+    position: absolute;
+    background-color: rgb(223,223,223);
     width: 1116px;
-    height: 550px;
+    height: 610px;
+
+    /*Posicionamiento*/
+    top:65px;
+    left: 250px;
+}
+
+#piePagina{
+    position: absolute;
+    background-color:  rgb(0, 99, 92);
+    width: 1366px;
+    height: 50px;
+    /*Posicionamiento*/
+    top:675px;
+}
+
+/*Elementos del contenido de cada pantalla*/
+h2{
+    position:relative;
+    text-align: center;
+}
+
+#textoInferior{
+    margin-top: 13%;
+}
+
+#campoNumero{
+    background-color: rgb(255,255,255);
+    border-style: none;
+    position: relative;
+    font-size: 150%;
+    font-family: 'Gabriola';
+    text-align: center;
+    border-radius: 3%;
+    /*Posicion*/
+    left: 30%;
+    margin-top: 10%;
+}
+
+#botonSiguiente{
+    position: relative;
+    left: 35%;
+    margin-top: 3%;
+    font-family: 'Gabriola';
+    font-size: 120%;
+
+    /*Tamaño del boton*/
+    width: 30%;
+    height: 10%;
+
+    /*Apariencia del boton*/
+    border-style: none;
+    background-color: rgb(0, 99, 92);
+    color: rgb(223,223,223);
+    border-radius: 3%;
 }

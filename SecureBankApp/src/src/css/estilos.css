@@ -1,0 +1,116 @@
+body{
+    margin-top:-34px;
+    margin-left:0px;
+    padding:0px;
+    font-family: 'Gabriola';
+    font-size: 150%;
+}
+
+/*Elementos de la pagina*/
+#encabezado{
+    /** Fondo */
+    background-color: rgb(0, 99, 92);
+    margin-top: 0%;
+    position: absolute;
+    width: 1366px;
+    height: 100px;
+    /** Texto */
+    text-align: center;
+    vertical-align: middle;
+    color: rgb(223,223,223);
+}
+
+#navegacionLateral{
+    /** Fondo */
+    margin-top: -34px;
+    position: absolute;
+    top: 65px;
+    background-color: rgb(26, 26, 26);
+    margin-top: 0%;
+    width: 250px;
+    height: 550px;
+
+    /** Texto*/
+    text-align: center;
+    padding-top: 60px;     
+}
+
+.itemMenu{
+    color: rgb(223,223,223);
+}
+
+#contenido{
+    position: absolute;
+    background-color: rgb(223,223,223);
+    width: 1116px;
+    height: 610px;
+
+    /*Posicionamiento*/
+    top:65px;
+    left: 250px;
+}
+
+#piePagina{
+    position: absolute;
+    background-color:  rgb(0, 99, 92);
+    width: 1366px;
+    height: 50px;
+    /*Posicionamiento*/
+    top:675px;
+}
+
+/*Elementos del contenido de cada pantalla*/
+h2{
+    position:relative;
+    text-align: center;
+}
+
+#textoInferior{
+    margin-top: 13%;
+}
+
+#campoNumero{
+    background-color: rgb(255,255,255);
+    border-style: none;
+    position: relative;
+    font-size: 150%;
+    font-family: 'Gabriola';
+    text-align: center;
+    border-radius: 3%;
+    /*Posicion*/
+    left: 30%;
+    margin-top: 10%;
+}
+
+button{
+    position: relative;
+    left: 35%;
+    margin-top: 3%;
+    font-family: 'Gabriola';
+    font-size: 120%;
+
+    /*Tamaño del boton*/
+    width: 30%;
+    height: 10%;
+
+    /*Apariencia del boton*/
+    border-style: none;
+    background-color: rgb(0, 99, 92);
+    color: rgb(223,223,223);
+    border-radius: 3%;
+}
+
+.botonSeleccion{
+    position: relative;
+    left: 0%;
+    margin-top: 5%;
+    margin-left: 2.5%;
+    padding-top: 15%;
+    /*Modificar el tamaño*/
+    height: 45%;
+
+}
+
+#botonConsulta{
+    background-image: "../";
+}

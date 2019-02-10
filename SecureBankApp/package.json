@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mysql": "^2.16.0"
+    "electron": "^4.0.4",
+    "mysql": "^2.16.0",
+    "reload": "^2.4.0",
+    "session-storage": "^1.0.1"
   }
 }
