@@ -12,46 +12,31 @@ var sesionLocal = require('sessionStorage');
 
 /** Operaciones que permiten las operaciones del cajero */
 //LISTO
-function actualizarClave( numeroTarjeta, claveActual, nuevaClave, nuevaClaveConfirmada){
+function actualizarClave(){
+  sessionStorage.setItem('nuevaClaveConfirmada',document.getElementById('campoClave').value);
+  let numeroTarjeta = sessionStorage.getItem('numeroTarjeta');
+  let claveIngresada = sessionStorage.getItem('claveIngresada');
+  let nuevaClave = sessionStorage.getItem('nuevaClave');
+  let nuevaClaveConfirmada = sessionStorage.getItem('nuevaClaveConfirmada');
   let intentos;
 
   conexion.connect(
     function(err){
       conexion.query(
-        'SELECT CLAVE,INTENTOS FROM CLIENTES WHERE NTARJETA = '+numeroTarjeta,
-        function(err,result,fields){
-          if(result[0].CLAVE != claveActual){
-            intentos = result[0].INTENTOS - 1;
-            conexion.query(
-              'UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){}
-            );
-            console.log('clave incorrecta'); // impresion de pantalla de clave incorrecta
-            console.log('fin de Operacion');// impresion de pantalla de fin de operacion
-            conexion.end();
-          }
-
-          if(nuevaClave != nuevaClaveConfirmada){
-            console.log('clave incorrecta'); //impreison de pantalla de clave incorrecta
-            console.log('fin de operacion'); // impresion de pantalla de fin de operacion
-            conexion.end();
-          }
-
-          if(result[0].CLAVE == claveActual && nuevaClave == nuevaClaveConfirmada){
-            conexion.query(
-              'UPDATE CLIENTES SET CLAVE ='+nuevaClave+',INTENTOS = 3 WHERE NTARJETA = '+numeroTarjeta, function(err){}
-            );
-            console.log('clave actualizada'); // imprimir pantalla de clave actualizada correctamente
-            console.log('fin de operacion'); // imprimir pantalla de fin de operacion
-            conexion.end();
-          }
-
+        'SELECT INTENTOS,CLAVE FROM CLIENTES WHERE NTARJETA ='+numeroTarjeta,
+        function(err,rows,fields){
+          //Continuar mañana desde aqui
         }
       );
     }
   );
+
+
+
+
 }
 
-//LISTO
+
 function actualizarSaldo( numeroTarjeta, claveActual, cantidadRetiro){
   let topeRetiro = 2500000;
   let intentos;
@@ -107,7 +92,7 @@ function bloquearTarjeta(numeroTarjeta){
       conexion.query(
         "UPDATE CLIENTES SET BLOQUEO = 1 WHERE NTARJETA = "+numeroTarjeta,
         function(err){
-          console.log('Su tarjeta ha sido bloqueada');//Imprimir pantalla de tarjeta bloqueada
+          escribirPantallaBloqueo();//Imprimir pantalla de tarjeta bloqueada
         }
       );
     }
@@ -136,8 +121,7 @@ function consultarSaldo(){
             conexion.query('UPDATE CLIENTES SET INTENTOS ='+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
             escribirPantallaError(1);
             if(intentos == 0){
-              conexion.query('UPDATE CLIENTES SET BLOQUEO = 1 WHERE NTARJETA = '+ numeroTarjeta);
-              escribirPantallaBloqueo();
+              bloquearTarjeta(numeroTarjeta);
             }
           }
         }
