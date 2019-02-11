@@ -108,7 +108,6 @@ function bloquearTarjeta(numeroTarjeta){
         "UPDATE CLIENTES SET BLOQUEO = 1 WHERE NTARJETA = "+numeroTarjeta,
         function(err){
           console.log('Su tarjeta ha sido bloqueada');//Imprimir pantalla de tarjeta bloqueada
-          conexion.end();
         }
       );
     }
@@ -120,6 +119,7 @@ function consultarSaldo(){
   sessionStorage.setItem('claveIngresada',document.getElementById('campoClave').value);
   let claveIngresada = sessionStorage.getItem('claveIngresada');
   let numeroTarjeta = sessionStorage.getItem('numeroTarjeta');
+  let intentos;
   alert
   conexion.connect(
     function(err){
@@ -127,9 +127,18 @@ function consultarSaldo(){
         'SELECT SALDO,INTENTOS,CLAVE FROM CLIENTES WHERE NTARJETA ='+numeroTarjeta,
         function(err,rows,fields){
           if(rows[0].CLAVE == claveIngresada){
+            conexion.query('UPDATE CLIENTES SET INTENTOS=3 WHERE NTARJETA = '+numeroTarjeta,function(err){});
             escribirPantallaResultadoConsulta(rows[0].SALDO);
-          }else{
+          }
 
+          if(rows[0].CLAVE != claveIngresada){
+            intentos = rows[0].INTENTOS - 1;
+            conexion.query('UPDATE CLIENTES SET INTENTOS ='+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
+            escribirPantallaError(1);
+            if(intentos == 0){
+              conexion.query('UPDATE CLIENTES SET BLOQUEO = 1 WHERE NTARJETA = '+ numeroTarjeta);
+              escribirPantallaBloqueo();
+            }
           }
         }
       );
@@ -146,7 +155,7 @@ function validarTarjeta(){
         'SELECT INTENTOS FROM CLIENTES WHERE NTARJETA = '+numeroTarjeta,
         function(err,result,fields){
           if(result[0].INTENTOS == 0 ){
-            bloquearTarjeta(numeroTarjeta);
+            escribirPantallaBloqueo(numeroTarjeta);
           }else{
             sessionStorage.setItem('numeroTarjeta',numeroTarjeta);
             escribirPantallaSeleccion();//impresion seleccionOperacion    

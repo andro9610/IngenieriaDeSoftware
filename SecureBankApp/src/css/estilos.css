@@ -120,3 +120,10 @@ button{
     width: 33%;
     margin: 0%;
 }
+
+#imagenSecundaria{
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    width: 17%;
+}
