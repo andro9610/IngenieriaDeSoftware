@@ -25,7 +25,23 @@ function actualizarClave(){
       conexion.query(
         'SELECT INTENTOS,CLAVE FROM CLIENTES WHERE NTARJETA ='+numeroTarjeta,
         function(err,rows,fields){
-          //Continuar mañana desde aqui
+          if(claveIngresada != rows[0].CLAVE){
+            intentos = rows[0].INTENTOS - 1;
+            conexion.query('UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
+            escribirPantallaError(1);
+            if(intentos == 0){
+              bloquearTarjeta();
+            }
+          }
+
+          if(nuevaClave != nuevaClaveConfirmada){
+            escribirPantallaError(1);
+          }
+
+          if(claveIngresada == rows[0].CLAVE && nuevaClave == nuevaClaveConfirmada){
+            conexion.query('UPDATE CLIENTES SET INTENTOS = 3,CLAVE ='+nuevaClave+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
+            escribirPantallaClaveActualizada();
+          }
         }
       );
     }

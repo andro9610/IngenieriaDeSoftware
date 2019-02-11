@@ -27,3 +27,11 @@ function escribirPantallaConfirmacion(){
         '<button type="button" id="botonSiguiente" onclick="actualizarClave()">Consultar</button>'+
         '<h2 id="textoInferior"></h2>'; 
 }
+
+function escribirPantallaClaveActualizada(){
+    contenido.innerHTML = '<h2 id="textoSuperior">Resultado: </h2>'+
+    '<img src="../imagenes/key.png" id="imagenPrincipal">'+
+    '<img src="../imagenes/exito.png" id="imagenSecundaria">'+
+    '<h2 id="textoInferior">Clave actualizada</h2>';
+    document.getElementById('textoInferior').style.marginTop = '3%';
+}
