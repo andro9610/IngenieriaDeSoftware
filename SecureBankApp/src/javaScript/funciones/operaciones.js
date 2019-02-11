@@ -8,6 +8,8 @@ var conexion = mysql.createConnection({
     database : 'securebankdatabase'
 });
 
+var sesionLocal = require('sessionStorage');
+
 /** Operaciones que permiten las operaciones del cajero */
 //LISTO
 function actualizarClave( numeroTarjeta, claveActual, nuevaClave, nuevaClaveConfirmada){
@@ -114,30 +116,21 @@ function bloquearTarjeta(numeroTarjeta){
 }
 
 //LISTO
-function consultarSaldo( numeroTarjeta, claveActual){
-  let intentos;
-
+function consultarSaldo(){
+  sessionStorage.setItem('claveIngresada',document.getElementById('campoClave').value);
+  let claveIngresada = sessionStorage.getItem('claveIngresada');
+  let numeroTarjeta = sessionStorage.getItem('numeroTarjeta');
+  alert
   conexion.connect(
     function(err){
       conexion.query(
-        'SELECT CLAVE,SALDO,INTENTOS FROM CLIENTES WHERE NTARJETA = '+numeroTarjeta,
-        function(err,result,fields){
-          if(result[0].CLAVE != claveActual){
-            intentos = result[0].INTENTOS - 1;
-            conexion.query(
-              'UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){}
-            );
-            console.log('clave incorrecta'); // impresion de pantalla de clave incorrecta
-            console.log('fin de Operacion');// impresion de pantalla de fin de operacion
-            conexion.end();
+        'SELECT SALDO,INTENTOS,CLAVE FROM CLIENTES WHERE NTARJETA ='+numeroTarjeta,
+        function(err,rows,fields){
+          if(rows[0].CLAVE == claveIngresada){
+            escribirPantallaResultadoConsulta(rows[0].SALDO);
           }else{
-            conexion.query(
-              'UPDATE CLIENTES SET INTENTOS = 3 WHERE NTARJETA = '+numeroTarjeta,function(err){}
-            );
-            console.log('saldo actual = '+result[0].SALDO); // se imprime pantalla de saldoActual
-            console.log('fin de Operacion'); // se imprime pantalla de fin de operacion
-            conexion.end();
-          }      
+
+          }
         }
       );
     }
@@ -155,8 +148,8 @@ function validarTarjeta(){
           if(result[0].INTENTOS == 0 ){
             bloquearTarjeta(numeroTarjeta);
           }else{
-            escribirPantallaSeleccion();//impresion seleccionOperacion
-            conexion.end();
+            sessionStorage.setItem('numeroTarjeta',numeroTarjeta);
+            escribirPantallaSeleccion();//impresion seleccionOperacion    
           }
         }
       );

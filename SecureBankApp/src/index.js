@@ -10,12 +10,10 @@ if(process.env.NODE_ENV !== 'production'){
     })
 }
 
-
-
 let ventanaPrincipal
 /** Lanzador de la ventana */
 app.on('ready', () => { 
-    ventanaPrincipal = new BrowserWindow({width: 1366, height: 725, frame: false, resizable: false,icon: path.join(__dirname, 'safebox.png')})
+    ventanaPrincipal = new BrowserWindow({width: 1366, height: 725, frame: false, resizable: false,icon: __dirname+'/src/iconos/banco.ico'});
     ventanaPrincipal.loadURL(url.format({
         pathname: path.join(__dirname, 'html/paginaBase.html'),
         protocol: 'file',
