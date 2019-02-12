@@ -20,6 +20,8 @@ function actualizarClave(){
   let nuevaClaveConfirmada = sessionStorage.getItem('nuevaClaveConfirmada');
   let intentos;
 
+  escribirPantallaRetirarTarjeta();
+  
   conexion.connect(
     function(err){
       conexion.query(
@@ -41,15 +43,11 @@ function actualizarClave(){
           if(claveIngresada == rows[0].CLAVE && nuevaClave == nuevaClaveConfirmada){
             conexion.query('UPDATE CLIENTES SET INTENTOS = 3,CLAVE ='+nuevaClave+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
             escribirPantallaClaveActualizada();
-          }
+          }   
         }
       );
     }
   );
-
-
-
-
 }
 
 
@@ -156,4 +154,11 @@ function validarTarjeta(){
       );
     }
   );
+}
+
+
+/**Funcion extra para fines esteticos */
+function sleep(delay) {
+  var start = new Date().getTime();
+  while (new Date().getTime() < start + delay);
 }

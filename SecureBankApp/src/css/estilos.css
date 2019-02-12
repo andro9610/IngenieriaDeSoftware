@@ -4,6 +4,11 @@ body{
     padding:0px;
     font-family: 'Gabriola';
     font-size: 150%;
+    /*Texto no seleccionable*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
 }
 
 /*Elementos de la pagina*/
