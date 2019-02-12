@@ -15,4 +15,20 @@ function escribirPantallaError(numeroError){
         document.getElementById('textoInferior').style.marginTop = '3%';
     }
 
+    if(numeroError == 2){
+        contenido.innerHTML = '<h2 id="textoSuperior">¡Error!</h2>'+
+        '<img src="../imagenes/billetera.png" id="imagenPrincipal">'+
+        '<img src="../imagenes/error.png" id="imagenSecundaria">'+
+        '<h2 id="textoInferior">No posee Fondos suficientes</h2>';
+        document.getElementById('textoInferior').style.marginTop = '3%';
+    }
+
+    if(numeroError == 3){
+        contenido.innerHTML = '<h2 id="textoSuperior">¡Error!</h2>'+
+        '<img src="../imagenes/monedas.png" id="imagenPrincipal">'+
+        '<img src="../imagenes/error.png" id="imagenSecundaria">'+
+        '<h2 id="textoInferior">Ha excedido el tope diario</h2>';
+        document.getElementById('textoInferior').style.marginTop = '3%';
+    }
+
 }

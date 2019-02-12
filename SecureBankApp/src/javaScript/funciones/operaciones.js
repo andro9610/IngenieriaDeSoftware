@@ -54,14 +54,43 @@ function actualizarClave(){
 
 
 function actualizarSaldo(){
-  let topeRetiro = 2500000;
-  let intentos,nuevoSaldo;
+  let intentos,nuevoSaldo,retiroAcumulado;
   let numeroTarjeta = sessionStorage.getItem('numeroTarjeta');
   let cantidadRetiro = sessionStorage.getItem('cantidadRetiro');
   sessionStorage.setItem('claveIngresada',document.getElementById('campoClave').value);
   let claveIngresada = sessionStorage.getItem('claveIngresada');
 
-  //continuar desde aqui
+  conexion.connect(
+    function(err){
+      conexion.query(
+        'SELECT SALDO,INTENTOS,CLAVE,TOPEDIARIO FROM CLIENTES WHERE NTARJETA = '+numeroTarjeta,
+        function(err,rows,fields){
+
+          retiroAcumulado = parseInt(rows[0].TOPEDIARIO) + parseInt(cantidadRetiro); 
+          nuevoSaldo = rows[0].SALDO - cantidadRetiro;
+          if(claveIngresada != rows[0].CLAVE){
+            intentos = rows[0].INTENTOS - 1;
+            conexion.query('UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTAREJTA = '+numeroTarjeta,function(err){});
+            escribirPantallaError(1);
+            if(intentos == 0){
+              bloquearTarjeta();
+            }
+          }else{
+            if(retiroAcumulado >= 2500000){
+            escribirPantallaError(3);
+            }else{
+              if(cantidadRetiro > rows[0].SALDO){
+                escribirPantallaError(2);
+              }else{      
+              escribirResultadoRetiro(nuevoSaldo);
+              conexion.query('UPDATE CLIENTES SET SALDO ='+nuevoSaldo+',TOPEDIARIO = '+retiroAcumulado+',INTENTOS = 3 WHERE NTARJETA = '+numeroTarjeta,function(err){});
+              }
+            }
+          }
+        }
+      );
+    }
+  );
 }
 
 //lISTO
