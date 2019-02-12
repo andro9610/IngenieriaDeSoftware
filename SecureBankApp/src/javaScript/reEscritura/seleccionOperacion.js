@@ -7,7 +7,7 @@ function escribirPantallaSeleccion(){
     contenido.innerHTML = ''+
         '<h2 id="textoSuperior">¿Que desea hacer?</h2>'+
         '<button type="button" id="botonConsulta" class="botonSeleccion" onclick="escribirPantallaConsulta();">Consultar saldo</button>'+
-        '<button type="button" id="botonRetiro" class="botonSeleccion" onclick="escribirPantallaRetiro();">Retirar dinero</button>'+
+        '<button type="button" id="botonRetiro" class="botonSeleccion" onclick="escribirPantallaCantidadRetiro();">Retirar dinero</button>'+
         '<button type="button" id="botonCambioClave" class="botonSeleccion" onclick="escribirPantallaCambioClave();">Cambiar clave</button>'+
         '<h2 id="textoInferior"></h2>';
     

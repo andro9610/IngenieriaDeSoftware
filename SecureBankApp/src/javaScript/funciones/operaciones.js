@@ -30,7 +30,7 @@ function actualizarClave(){
             conexion.query('UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
             escribirPantallaError(1);
             if(intentos == 0){
-              bloquearTarjeta();
+              bloquearTarjeta(numeroTarjeta);
             }
           }
 
@@ -53,52 +53,15 @@ function actualizarClave(){
 }
 
 
-function actualizarSaldo( numeroTarjeta, claveActual, cantidadRetiro){
+function actualizarSaldo(){
   let topeRetiro = 2500000;
-  let intentos;
-  let nuevoSaldo;
-  conexion.connect(
-    function(err){
-      conexion.query(
-        'SELECT CLAVE,SALDO,INTENTOS,TOPEDIARIO FROM CLIENTES WHERE NTARJETA = '+numeroTarjeta,
-        function(err,result,fields){
-          if(result[0].CLAVE != claveActual){
-            intentos = result[0].INTENTOS - 1;
-            conexion.query(
-              'UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){}
-            );
-            console.log('clave incorrecta'); // impresion de pantalla de clave incorrecta
-            console.log('fin de Operacion');// impresion de pantalla de fin de operacion
-            conexion.end();
-          }
+  let intentos,nuevoSaldo;
+  let numeroTarjeta = sessionStorage.getItem('numeroTarjeta');
+  let cantidadRetiro = sessionStorage.getItem('cantidadRetiro');
+  sessionStorage.setItem('claveIngresada',document.getElementById('campoClave').value);
+  let claveIngresada = sessionStorage.getItem('claveIngresada');
 
-          if((result[0].TOPEDIARIO+cantidadRetiro) >= topeRetiro){
-            console.log('Ha excedido el tope diario para retiros'); //impreison de pantalla de topeExcedido
-            console.log('fin de Operacion'); // impresion de pantalla de fin de operacion
-            conexion.end();
-          }
-
-          if(result[0].SALDO < cantidadRetiro){
-            console.log('no hay fondos suficientes para realizar esta accion'); // impresion de pantalla de saldoInsuficiente
-            console.log('fin de Operacion');
-            conexion.end();
-          }
-
-          if(result[0].CLAVE == claveActual && (result[0].TOPEDIARIO+cantidadRetiro) < topeRetiro && result[0].SALDO > cantidadRetiro){
-            nuevoSaldo = result[0].SALDO - cantidadRetiro;
-            topeRetiro = result[0].TOPEDIARIO + cantidadRetiro;
-            conexion.query(
-              'UPDATE CLIENTES SET SALDO = '+nuevoSaldo+',INTENTOS = 3, TOPEDIARIO = '+topeRetiro+' WHERE NTARJETA = '+numeroTarjeta,function(err){}
-            );
-            console.log('retiro Realizado correctamente'); // imprimir pantalla retiro realizado
-            console.log('fin de operacion'); // imprimir pantalla fin operacion
-            conexion.end();
-          }
-
-        }
-      );
-    }
-  );
+  //continuar desde aqui
 }
 
 //lISTO

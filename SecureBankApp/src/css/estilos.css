@@ -69,7 +69,7 @@ h2{
     margin-top: 13%;
 }
 
-#campoNumero,#campoClave{
+#campoNumero,#campoClave,#cantidadRetiro{
     background-color: rgb(255,255,255);
     border-style: none;
     position: relative;
