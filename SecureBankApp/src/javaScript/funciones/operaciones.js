@@ -20,8 +20,6 @@ function actualizarClave(){
   let nuevaClaveConfirmada = sessionStorage.getItem('nuevaClaveConfirmada');
   let intentos;
 
-  escribirPantallaRetirarTarjeta();
-  
   conexion.connect(
     function(err){
       conexion.query(
@@ -46,6 +44,7 @@ function actualizarClave(){
           }   
         }
       );
+      location.reload();
     }
   );
 }
@@ -85,6 +84,7 @@ function actualizarSaldo(){
               }
             }
           }
+          setTimeout(location.reload(),3000);
         }
       );
     }
@@ -101,6 +101,7 @@ function bloquearTarjeta(numeroTarjeta){
           escribirPantallaBloqueo();//Imprimir pantalla de tarjeta bloqueada
         }
       );
+      location.reload();
     }
   );  
 }
@@ -132,6 +133,7 @@ function consultarSaldo(){
           }
         }
       );
+    location.reload();
     }
   );
 }
@@ -154,11 +156,4 @@ function validarTarjeta(){
       );
     }
   );
-}
-
-
-/**Funcion extra para fines esteticos */
-function sleep(delay) {
-  var start = new Date().getTime();
-  while (new Date().getTime() < start + delay);
 }
