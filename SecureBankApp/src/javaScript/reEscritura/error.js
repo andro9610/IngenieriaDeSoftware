@@ -3,6 +3,7 @@
  * 1 - Clave incorrecta
  * 2 - Fondos insuficientes
  * 3 - tope diario excedido
+ * 4 - Cajero sin fondos
  */
 
 function escribirPantallaError(numeroError){
@@ -28,6 +29,14 @@ function escribirPantallaError(numeroError){
         '<img src="../imagenes/monedas.png" id="imagenPrincipal">'+
         '<img src="../imagenes/error.png" id="imagenSecundaria">'+
         '<h2 id="textoInferior">Ha excedido el tope diario</h2>';
+        document.getElementById('textoInferior').style.marginTop = '3%';
+    }
+
+    if(numeroError == 4){
+        contenido.innerHTML = '<h2 id="textoSuperior">¡Error!</h2>'+
+        '<img src="../imagenes/cajaFuerte.png" id="imagenPrincipal">'+
+        '<img src="../imagenes/error.png" id="imagenSecundaria">'+
+        '<h2 id="textoInferior">El cajero no tiene fondos</h2>';
         document.getElementById('textoInferior').style.marginTop = '3%';
     }
 
