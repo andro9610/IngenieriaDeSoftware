@@ -1,7 +1,7 @@
 function escribirPantallaCantidadIngreso(){
     let navegacionLateral = document.getElementsByClassName('itemMenu');
     navegacionLateral[1].style.color = 'rgb(26, 26, 26)';
-    navegacionLateral[6].style.color = 'rgb(223, 223, 223)';
+    navegacionLateral[5].style.color = 'rgb(223, 223, 223)';
 
     let contenido =document.getElementById('contenido');
     contenido.innerHTML = ''+

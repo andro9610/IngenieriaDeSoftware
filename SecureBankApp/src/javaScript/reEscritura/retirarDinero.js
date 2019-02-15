@@ -16,7 +16,7 @@ function escribirPantallaPedirClave(){
     let contenido = document.getElementById('contenido');
     contenido.innerHTML = '<h2 id="textoSuperior">Ingrese su clave actual</h2>'+
         '<input type="password" id="campoClave" autofocus= "true" maxlength="4" minlength="4"/>'+'<br>'+
-        '<button type="button" id="botonSiguiente" onclick="retirarDinero()">Continuar</button>'+
+        '<button type="button" id="botonSiguiente" onclick="retirarDinero();">Continuar</button>'+
         '<h2 id="textoInferior"></h2>';
 }
 

@@ -49,55 +49,7 @@ function actualizarClave(){
 }
 
 function retirarDinero(){
-  let intentos,nuevoSaldo,retiroAcumulado,saldoCajero;
-  let numeroTarjeta = sessionStorage.getItem('numeroTarjeta');
-  let cantidadRetiro = sessionStorage.getItem('cantidadRetiro');
-  sessionStorage.setItem('claveIngresada',document.getElementById('campoClave').value);
-  let claveIngresada = sessionStorage.getItem('claveIngresada');
-
-  conexion.connect(
-    function(err){
-      conexion.query(
-        'SELECT SALDOCAJERO FROM CAJERO WHERE IDCAJERO = 236211223;',
-        function(err,rows,fields){
-          saldoCajero = rows[0].SALDOCAJERO;
-          conexion.query(
-            'SELECT SALDO,INTENTOS,CLAVE,TOPEDIARIO FROM CLIENTES WHERE NTARJETA = '+numeroTarjeta,
-            function(err,rows,fields){
-    
-              retiroAcumulado = parseInt(rows[0].TOPEDIARIO) + parseInt(cantidadRetiro); 
-              nuevoSaldo = rows[0].SALDO - cantidadRetiro;
-              if(claveIngresada != rows[0].CLAVE){
-                intentos = rows[0].INTENTOS - 1;
-                conexion.query('UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTAREJTA = '+numeroTarjeta,function(err){});
-                escribirPantallaError(1);
-                if(intentos == 0){
-                  bloquearTarjeta();
-                }
-              }else{
-                if(retiroAcumulado >= 2500000){
-                escribirPantallaError(3);
-                }else{
-                  if(cantidadRetiro > rows[0].SALDO){
-                    escribirPantallaError(2);
-                  }else{
-                    if(saldoCajero < cantidadRetiro){
-                      escribirPantallaError(4);
-                    }else{
-                      saldoCajero -= cantidadRetiro;
-                      escribirResultadoRetiro(nuevoSaldo);
-                      conexion.query('UPDATE CLIENTES SET SALDO ='+nuevoSaldo+',TOPEDIARIO = '+retiroAcumulado+',INTENTOS = 3 WHERE NTARJETA = '+numeroTarjeta,function(err){});
-                      conexion.query('UPDATE CAJERO SET SALDOCAJERO = '+saldoCajero+' WHERE IDCAJERO = 236211223');
-                    }   
-                  }
-                }
-              }
-            }
-          ); 
-        }
-      );
-    }
-  );
+  alert('Entre la funcion');
 }
 
 function ingresarDinero(){
