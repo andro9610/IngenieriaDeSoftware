@@ -6,13 +6,13 @@ function escribirPantallaCantidadIngreso(){
     let contenido =document.getElementById('contenido');
     contenido.innerHTML = ''+
         '<h2 id="textoSuperior">Ingrese la cantidad que desea ingresar</h2>'+
-        '<input type="text" id="cantidadRetiro" autofocus= "true" maxlength="10" minlength="10"/>'+'<br>'+
-        '<button type="button" id="botonSiguiente" onclick="escribirPantallaPedirClave();">Cargar saldo</button>'+
+        '<input type="text" id="cantidadIngreso" autofocus= "true" maxlength="10" minlength="10"/>'+'<br>'+
+        '<button type="button" id="botonSiguiente" onclick="escribirPantallaPedirClaveI();">Cargar saldo</button>'+
         '<h2 id="textoInferior"></h2>';
 }
 
-function escribirPantallaPedirClave(){
-    sessionStorage.setItem('cantidadRetiro',document.getElementById('cantidadRetiro').value);
+function escribirPantallaPedirClaveI(){
+    sessionStorage.setItem('cantidadIngreso',document.getElementById('cantidadIngreso').value);
     let contenido = document.getElementById('contenido');
     contenido.innerHTML = '<h2 id="textoSuperior">Ingrese su clave actual</h2>'+
         '<input type="password" id="campoClave" autofocus= "true" maxlength="4" minlength="4"/>'+'<br>'+

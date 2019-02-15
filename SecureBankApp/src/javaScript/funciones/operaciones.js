@@ -49,11 +49,46 @@ function actualizarClave(){
 }
 
 function retirarDinero(){
-  alert('Entre la funcion');
+  alert('HA ENTRADO EN LA FUNCION RETIRAR');
 }
 
 function ingresarDinero(){
-  conexion.connect
+
+  sessionStorage.setItem('claveIngresada',document.getElementById('campoClave').value);
+  let saldoCliente,claveCliente,saldoCajero,intentos;
+  let numeroTarjeta = sessionStorage.getItem('numeroTarjeta');
+  let cantidadIngreso = sessionStorage.getItem('cantidadIngreso');
+  let claveIngresada = sessionStorage.getItem('claveIngresada');
+
+  conexion.connect(
+    function(err){
+      conexion.query(
+        'SELECT SALDO,CLAVE,INTENTOS FROM CLIENTES WHERE NTARJETA = '+numeroTarjeta,
+        function(err,rows,fields){
+          if(rows[0].CLAVE == claveIngresada){
+            saldoCliente = parseInt(rows[0].SALDO) + parseInt(cantidadIngreso);
+            conexion.query('UPDATE CLIENTES SET SALDO = '+saldoCliente+', INTENTOS = 3 WHERE NTARJETA = '+numeroTarjeta,function(err){});
+            escribirResultadoIngreso(saldoCliente);
+            conexion.query(
+              'SELECT SALDOCAJERO FROM CAJERO WHERE IDCAJERO = 236211223',
+              function(err,rows,fields){
+                saldoCajero = parseInt(rows[0].SALDOCAJERO) + parseInt(cantidadIngreso);
+                conexion.query('UPDATE CAJERO SET SALDOCAJERO ='+saldoCajero,function(err){alert(saldoCajero);});
+              }
+            );
+          }else{
+            intentos = rows[0].INTENTOS - 1;
+            conexion.query('UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
+            if(intentos == 0){
+              bloquearTarjeta(numeroTarjeta);
+            }else{
+              escribirPantallaError(1);
+            }
+          }
+        }
+      );
+    }
+  );
 }
 
 //lISTO

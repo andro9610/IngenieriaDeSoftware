@@ -7,11 +7,11 @@ function escribirPantallaCantidadRetiro(){
     contenido.innerHTML = ''+
         '<h2 id="textoSuperior">Ingrese la cantidad que desea retirar</h2>'+
         '<input type="text" id="cantidadRetiro" autofocus= "true" maxlength="10" minlength="10"/>'+'<br>'+
-        '<button type="button" id="botonSiguiente" onclick="escribirPantallaPedirClave();">Retirar</button>'+
+        '<button type="button" id="botonSiguiente" onclick="escribirPantallaPedirClaveR();">Retirar</button>'+
         '<h2 id="textoInferior"></h2>';
 }
 
-function escribirPantallaPedirClave(){
+function escribirPantallaPedirClaveR(){
     sessionStorage.setItem('cantidadRetiro',document.getElementById('cantidadRetiro').value);
     let contenido = document.getElementById('contenido');
     contenido.innerHTML = '<h2 id="textoSuperior">Ingrese su clave actual</h2>'+
