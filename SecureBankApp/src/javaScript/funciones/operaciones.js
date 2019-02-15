@@ -49,7 +49,56 @@ function actualizarClave(){
 }
 
 function retirarDinero(){
-  alert('HA ENTRADO EN LA FUNCION RETIRAR');
+
+  sessionStorage.setItem('claveIngresada',document.getElementById('campoClave').value);
+  let saldoCliente,saldoCajero,intentos,topeActual;
+  let numeroTarjeta = sessionStorage.getItem('numeroTarjeta');
+  let cantidadRetiro = sessionStorage.getItem('cantidadRetiro');
+  let claveIngresada = sessionStorage.getItem('claveIngresada');
+
+  conexion.connect(
+    function(err){
+      conexion.query(
+        'SELECT SALDO,CLAVE,INTENTOS,TOPEDIARIO FROM CLIENTES WHERE NTARJETA = '+numeroTarjeta,
+        function(err,rows,fields){
+          if(rows[0].CLAVE == claveIngresada){
+            if(cantidadRetiro <= rows[0].SALDO){
+              topeActual = parseInt(cantidadRetiro) + parseInt(rows[0].TOPEDIARIO);
+              if(topeActual < 2500000){
+                saldoCliente = parseInt(rows[0].SALDO) - parseInt(cantidadRetiro);
+                conexion.query(
+                  'SELECT SALDOCAJERO FROM CAJERO WHERE IDCAJERO = 236211223',
+                  function(err,rows,fields){
+                    if(cantidadRetiro < rows[0].SALDOCAJERO){
+                      saldoCajero = parseInt(rows[0].SALDOCAJERO) - parseInt(cantidadRetiro);
+                      conexion.query('UPDATE CLIENTES SET SALDO ='+saldoCliente+', INTENTOS = 3, TOPEDIARIO ='+topeActual+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
+                      conexion.query('UPDATE CAJERO SET SALDOCAJERO = '+saldoCajero,function(err){});
+                      escribirResultadoRetiro(saldoCliente);
+                    }else{
+                      escribirPantallaError(4);
+                    }
+                  }
+                );
+              }else{
+                escribirPantallaError(3);
+              }
+            }else{
+              escribirPantallaError(2);
+            }
+          }else{
+            intentos = rows[0].INTENTOS - 1;
+            conexion.query('UPDATE CLIENTES SET INTENTOS = '+intentos+' WHERE NTARJETA = '+numeroTarjeta,function(err){});
+            if(intentos == 0){
+              bloquearTarjeta(numeroTarjeta);
+            }else{
+              escribirPantallaError(1);
+            }
+          }
+        }
+      );
+    }
+  );
+
 }
 
 function ingresarDinero(){
