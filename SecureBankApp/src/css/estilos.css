@@ -1,3 +1,9 @@
+html {
+    overflow-y:hidden; /*oculta scroll vertical*/
+    overflow-x:hidden; /*oculta scroll horizontal*/
+    overflow:hidden; /*oculta los dos scroll */
+    }
+
 body{
     margin-top:-34px;
     margin-left:0px;
@@ -59,6 +65,24 @@ body{
     height: 50px;
     /*Posicionamiento*/
     top:675px;
+}
+
+#textoFinal{
+    position: absolute;
+    color: rgb(223,223,223);
+    top: -5px;
+    padding:0px;
+    margin:0;
+    font-size: 135%;
+    margin-left: 4%;
+    margin-top: 0.4%;
+}
+
+#imagenCancelar{
+    margin: 0%;
+    padding: 0%;
+    margin-top: 0.5%;
+    margin-left: 1%;
 }
 
 /*Elementos del contenido de cada pantalla*/

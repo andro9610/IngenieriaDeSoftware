@@ -101,7 +101,7 @@ function retirarDinero(){
 }
 
 function ingresarDinero(){
-  alert('ha entrado a la funcion ingresar Dinero');
+  conexion.connect
 }
 
 //lISTO
