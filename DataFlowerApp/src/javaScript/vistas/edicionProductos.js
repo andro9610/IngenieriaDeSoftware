@@ -8,11 +8,11 @@ function mostrarPantallaEdicionProductos(){
                             '<div id="fondoTitulo">'+
                                 '<h2 class="tituloColumna">id. Producto</h2>'+
                                 '<h2 class="tituloColumna">Descripcion producto</h2>'+
-                                '<h2 class="tituloColumna">Proveedor</h2>'+
+                                '<h2 class="tituloColumna">Id. Comprador</h2>'+
                             '</div>'+
                             '<input type="text" id="numeroProducto" class="campoTexto">'+
                             '<input type="text" id="descripcionProducto" class="campoTexto">'+
-                            '<input type="text" id="proveedor" class="campoTexto">'+
+                            '<input type="text" id="comprador" class="campoTexto">'+
                             '<button class="botonAccion" id="botonAgregar"><img id="imagenBoton" src="../imagenes/utileria/comprobado.png"/>Agregar</button><br>'+
                         '</div>';              
 
@@ -41,11 +41,11 @@ function mostrarPantallaEdicionProductos(){
     descripcionProducto.style.width = '28%';
     descripcionProducto.placeholder = 'descripcion del producto';
 
-    let proveedor = document.getElementById('proveedor');
+    let proveedor = document.getElementById('comprador');
     proveedor.style.marginLeft = '48%';
     proveedor.style.marginTop = '6%';
     proveedor.style.width = '28%';
-    proveedor.placeholder = 'Proveedor';
+    proveedor.placeholder = 'id. Comprador';
 
     let titulo = document.getElementsByClassName('tituloColumna');
     titulo[0].style.position = 'fixed';

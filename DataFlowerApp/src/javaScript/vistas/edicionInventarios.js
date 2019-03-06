@@ -28,5 +28,3 @@ function mostrarEdicionInventarios(){
     titulo[2].style.zIndex = "1";
     titulo[2].style.marginLeft = "60%";
 }
-
-window.onload = mostrarEdicionInventarios;

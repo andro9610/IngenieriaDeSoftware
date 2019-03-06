@@ -22,4 +22,4 @@ function mostrarPantallaInicio(){
     agregarBarraInferior(cuerpo);
 }
 
-//window.onload = mostrarPantallaInicio;
+window.onload = mostrarPantallaInicio;

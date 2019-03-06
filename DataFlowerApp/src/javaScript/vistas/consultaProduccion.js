@@ -8,7 +8,7 @@ function mostrarConsultaProduccion(){
                             '<div id="fondoTitulo">'+
                                 '<h2 class="tituloColumna">id. Producto</h2>'+
                                 '<h2 class="tituloColumna">Descripcion producto</h2>'+
-                                '<h2 class="tituloColumna">Proveedor</h2>'+
+                                '<h2 class="tituloColumna">id. Comprador</h2>'+
                                 '<h2 class="tituloColumna">Cantidad</h2>'+
                             '</div>'+
                         '</div>';   
