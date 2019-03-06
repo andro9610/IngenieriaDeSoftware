@@ -39,9 +39,9 @@ function mostrarPantallaOperaciones(){
                             '<button id="botonAtras" onclick="mostrarPantallaInicio();"></button>'+
                         '</div>'+
                         '<div id="espacioTrabajo">'+
-                            '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(1);">Actualizar existencias</button><br>'+
-                            '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(2);">Actualizar exportaciones</button><br>'+
-                            '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(3);">Ver inventario</button><br>'+
+                            '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(1);" onclick="mostrarEdicionInventarios();">Actualizar existencias</button><br>'+
+                            '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(2);" onclick="mostrarEdicionProduccion();">Actualizar exportaciones</button><br>'+
+                            '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(3);" onclick="mostrarConsultaMateriasPrimas()">Ver inventario</button><br>'+
                             '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(4);" onclick="mostrarConsultaProduccion()">Ver exportaciones</button><br>'+
                             '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(5);" onclick="mostrarPantallaEdicionProductos();">Editar productos</button><br>'+
                             '<button class="botonAccion" onmouseout="escribirMensajePersonalizado(7)" onmouseover="escribirMensajePersonalizado(6);" onclick="mostrarPantallaEdicionMateriasPrimas();">Editar materias primas</button><br>'+

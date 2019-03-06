@@ -1,17 +1,17 @@
-function mostrarConsultaProduccion(){
+function mostrarConsultaMateriasPrimas(){
     let cuerpo = document.getElementById('cuerpoDocumento');
     cuerpo.innerHTML =  '<div id="cabezeraPantalla">'+
-                            '<h1 id="tituloEncabezado">Consulta de produccion</h1>'+
+                            '<h1 id="tituloEncabezado">Consulta de materias primas</h1>'+
                             '<button id="botonAtras" onclick="mostrarPantallaOperaciones();"></button>'+
                         '</div>'+
                         '<div id="espacioTrabajo">'+
                             '<div id="fondoTitulo">'+
-                                '<h2 class="tituloColumna">id. Producto</h2>'+
-                                '<h2 class="tituloColumna">Descripcion producto</h2>'+
-                                '<h2 class="tituloColumna">Proveedor</h2>'+
-                                '<h2 class="tituloColumna">Cantidad</h2>'+
+                                '<h2 class="tituloColumna">id. Material</h2>'+
+                                '<h2 class="tituloColumna">Descripcion Material</h2>'+
+                                '<h2 class="tituloColumna">Metrica</h2>'+
+                                '<h2 class="tituloColumna">Unidades</h2>'+
                             '</div>'+
-                        '</div>';   
+                        '</div>';
 
     let titulo = document.getElementsByClassName('tituloColumna');
     titulo[0].style.position = 'fixed';
@@ -32,6 +32,6 @@ function mostrarConsultaProduccion(){
     titulo[3].style.position = 'fixed';
     titulo[3].style.fontSize = '250%';
     titulo[3].style.zIndex = "1";
-    titulo[3].style.marginLeft = "81%";
+    titulo[3].style.marginLeft = "77%";
 }
 
