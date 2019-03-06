@@ -14,6 +14,7 @@ function mostrarPantallaEdicionMateriasPrimas(){
                             '<input type="text" id="descripcionMaterial" class="campoTexto">'+
                             '<input type="text" id="metricaMaterial" class="campoTexto">'+
                             '<button class="botonAccion" id="botonAgregar" onclick="crearMateriaPrima();"><img id="imagenBoton" src="../imagenes/utileria/comprobado.png"/>Agregar</button><br>'+
+                            '<div id="resultadoConsulta"></div>'+
                         '</div>';
 
     let botonAgregar = document.getElementById('botonAgregar');
@@ -22,6 +23,7 @@ function mostrarPantallaEdicionMateriasPrimas(){
     botonAgregar.style.width = '25%';
     botonAgregar.style.paddingTop = '1%';
     botonAgregar.style.paddingBottom = '1%';
+    botonAgregar.onload = actualizarMateriaPrima();
 
     let imagenBoton = document.getElementById('imagenBoton');
     imagenBoton.style.position = 'float';
@@ -31,6 +33,7 @@ function mostrarPantallaEdicionMateriasPrimas(){
     let numeroMaterial = document.getElementById('numeroMaterial');
     numeroMaterial.style.marginLeft = '2%';
     numeroMaterial.style.marginTop = '6%';
+    numeroMaterial.style.width = '20%';
     numeroMaterial.placeholder = "id. Material";
 
     let descripcionMaterial = document.getElementById('descripcionMaterial');

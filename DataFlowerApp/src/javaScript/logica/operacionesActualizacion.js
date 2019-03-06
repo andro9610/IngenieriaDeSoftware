@@ -6,3 +6,12 @@ var conexion = mysql.createConnection({
     port: 3306,
     database : 'flowerdatabase'
 });
+
+
+function actualizarInventario(){
+
+}
+
+function actualizarProduccion(){
+    
+}

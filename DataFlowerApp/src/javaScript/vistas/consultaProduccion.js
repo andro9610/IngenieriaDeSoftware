@@ -11,9 +11,11 @@ function mostrarConsultaProduccion(){
                                 '<h2 class="tituloColumna">id. Comprador</h2>'+
                                 '<h2 class="tituloColumna">Cantidad</h2>'+
                             '</div>'+
+                            '<div id="resultadoConsulta"></div>'+
+                            '<div id="resultadoConsultaCompradores"></div>'+
                         '</div>';   
-
-    let titulo = document.getElementsByClassName('tituloColumna');
+    
+    let titulo = document.getElementsByClassName ('tituloColumna');                   
     titulo[0].style.position = 'fixed';
     titulo[0].style.fontSize = '250%';
     titulo[0].style.zIndex = "1";
@@ -22,16 +24,20 @@ function mostrarConsultaProduccion(){
     titulo[1].style.position = 'fixed';
     titulo[1].style.fontSize = '250%';
     titulo[1].style.zIndex = "1";
-    titulo[1].style.marginLeft = "26%";
+    titulo[1].style.marginLeft = "25%";
 
     titulo[2].style.position = 'fixed';
     titulo[2].style.fontSize = '250%';
     titulo[2].style.zIndex = "1";
-    titulo[2].style.marginLeft = "60%";
+    titulo[2].style.marginLeft = "58%";
 
     titulo[3].style.position = 'fixed';
     titulo[3].style.fontSize = '250%';
     titulo[3].style.zIndex = "1";
     titulo[3].style.marginLeft = "81%";
+
+    let botonAtras = document.getElementById('botonAtras');
+    botonAtras.onload = consultarProduccion();
+
 }
 

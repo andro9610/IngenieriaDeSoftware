@@ -11,8 +11,11 @@ function mostrarConsultaMateriasPrimas(){
                                 '<h2 class="tituloColumna">Metrica</h2>'+
                                 '<h2 class="tituloColumna">Unidades</h2>'+
                             '</div>'+
+                            '<div id="resultadoConsulta"></div>'+
                         '</div>';
 
+
+    document.getElementById('tituloEncabezado').onload = consultarInventario();
     let titulo = document.getElementsByClassName('tituloColumna');
     titulo[0].style.position = 'fixed';
     titulo[0].style.fontSize = '250%';

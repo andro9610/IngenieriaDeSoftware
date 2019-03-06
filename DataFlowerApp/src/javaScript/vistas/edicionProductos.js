@@ -14,6 +14,8 @@ function mostrarPantallaEdicionProductos(){
                             '<input type="text" id="descripcionProducto" class="campoTexto">'+
                             '<input type="text" id="comprador" class="campoTexto">'+
                             '<button class="botonAccion" id="botonAgregar" onclick="crearProducto();"><img id="imagenBoton" src="../imagenes/utileria/comprobado.png"/>Agregar</button><br>'+
+                            '<div id="resultadoConsulta"></div>'+
+                            '<div id="resultadoConsultaCompradores"></div>'+
                         '</div>';              
 
     let botonAgregar = document.getElementById('botonAgregar');
@@ -22,6 +24,7 @@ function mostrarPantallaEdicionProductos(){
     botonAgregar.style.width = '20%';
     botonAgregar.style.paddingTop = '0.9%';
     botonAgregar.style.paddingBottom = '0.9%';
+    botonAgregar.onload = actualizarProducto();
 
 
     let imagenBoton = document.getElementById('imagenBoton');

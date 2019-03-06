@@ -134,3 +134,51 @@ button:hover{
     padding-top: 1%;
     padding-bottom: 1%;
 }
+
+p{
+    font-size: 230%;
+    margin-top: 0%;
+    margin-bottom: -0%;
+}
+
+.idMaterial{
+    margin-left: 6%;
+}
+
+.descripcionMaterial{
+    position: absolute;
+    margin-top: -4.2%;
+    margin-left: 25%;  
+}
+
+.metricaMaterial{
+    position: absolute;
+    margin-top: -5.5%;
+    margin-left: 57%;  
+}
+
+.idProducto{
+    position: absolute;
+    margin-left: 4%;
+    margin-top: 1%;
+}
+
+.descripcionProducto{
+    position: absolute;
+    margin-left: 20%;
+    margin-top: -2%;
+}
+
+.idComprador{
+    position: relative;
+    margin-left: 50%;
+    margin-top: 0%;
+    margin-bottom: 13%;
+}
+
+#resultadoConsultaCompradores{
+    position: absolute;
+    padding: 0%;
+    top: 21%;
+    left: 45%;
+}
