@@ -1,0 +1,32 @@
+CREATE DATABASE flowerdatabase;
+
+USE flowerdatabase;
+
+CREATE TABLE PRODUCTOS(
+    IDPRODUCTO INT(10) PRIMARY KEY NOT NULL,
+    NOMBREPRODUCTO VARCHAR(30) NOT NULL,
+    CANTIDAD INT(9) NOT NULL 
+);
+
+/*El campo MEDICION hace referencia a en que unidades se cuenta el material, ejemplo:
+  el abono se puede contar en Kilogramos, arrobas, etc...*/
+CREATE TABLE MATERIALES(
+    IDMATERIAL INT(10) PRIMARY KEY NOT NULL,
+    NOMBREMATERIAL VARCHAR(30) NOT NULL,
+    CANTIDAD INT(9) NOT NULL,
+    MEDICION VARCHAR(10) NOT NULL
+);
+
+/*El campo TIPOUSUARIO es cero si el usuario es gestor, uno si es administrador*/
+CREATE TABLE USUARIOS(
+    NOMBREUSUARIO VARCHAR(20),
+    TIPOUSUARIO BINARY (1),
+    CLAVE INT(8)
+);
+
+CREATE TABLE HISTORIAL(
+    IDHISTORIAL INT(10) PRIMARY KEY NOT NULL,
+    FECHA DATETIME(6) NOT NULL,
+    NOMBREUSUARIO VARCHAR(20) NOT NULL,
+    DESCRIPCION VARCHAR(50) NOT NULL
+);

@@ -1,0 +1,136 @@
+tittle{
+    visibility: hidden;
+    display: none;
+}
+
+body{
+    /*Texto no seleccionable*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: url("../imagenes/wallpapers/flores.jpg");
+    background-size: 100%; 
+    font-family: 'Century Gothic';
+    margin:0%;
+}
+
+
+#cuerpoDocumento{
+    margin: 0%;
+}
+
+button{
+    font-family: 'Century Gothic';
+    /*Tamaño del boton*/
+    width: 20%;
+    height: 8%;
+
+    /*Apariencia del boton*/
+    border-style: none;
+    background-color: rgb(200,0, 0);
+    color: rgb(223,223,223);
+
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+}
+
+button:hover{
+    color: rgb(143,0, 0);
+    background-color: rgb(223,223,223);
+}
+
+#botonInicial{
+    position: absolute;
+    left: 75%;
+    top: 0%;
+    margin-top:48.5%;
+    font-size: 200%;
+}
+
+#cabeceraPantalla{
+    position: fixed;
+    width: 100%;  
+    height: auto;
+}
+
+#tituloEncabezado{
+    position: fixed;
+    z-index: 1;
+    text-align: center;
+    background-color: rgb(200,0, 0);
+    color: rgb(223,223,223);
+    font-size: 300%;
+    margin-top: 0%;
+    padding-top: 1.5%;
+    padding-bottom: 1%;
+    width: 100%;
+}
+
+#botonAtras{
+    position: fixed;
+    z-index: 1;
+    /*Ajustes de imagen*/
+    background-image: url('../imagenes/controles/boton-atras.png');
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /*Ajustes de posicion*/
+    left: 1%;
+    top: 1%;
+    /*Modificar el tamaño*/
+    width: 5%;
+    height: 9%;
+}
+
+#espacioTrabajo{
+    position: absolute;
+
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+    margin: 1%;
+    background-color: rgb(255,255,255);
+    margin-top: 8%;
+    min-height: 83%;
+    width: 98%;
+}
+
+.botonAccion{
+    font-size: 200%;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+#textoGuia{
+    /*Personalizacion basica*/
+    background-color: rgb(223,223,223);
+    /*ubicacion*/
+    position: absolute;
+    top: 17%;
+    left: 45%;
+    /*Tamaño*/
+    height: 30%;
+    width: 50%;
+    /*Propiedades de contenido*/
+    text-align: center;
+    padding-top: 15%;
+}
+
+.campoTexto{
+    background-color: rgb(255,255,255);
+    border-style: solid;
+    position: absolute;
+    font-size: 200%;
+    font-family: 'Century Gothic';
+    text-align: center;
+
+    border-radius: 7px 7px 7px 7px;
+    -moz-border-radius: 7px 7px 7px 7px;
+    -webkit-border-radius: 7px 7px 7px 7px;
+
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
