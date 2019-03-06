@@ -13,7 +13,7 @@ function mostrarPantallaEdicionProductos(){
                             '<input type="text" id="numeroProducto" class="campoTexto">'+
                             '<input type="text" id="descripcionProducto" class="campoTexto">'+
                             '<input type="text" id="comprador" class="campoTexto">'+
-                            '<button class="botonAccion" id="botonAgregar"><img id="imagenBoton" src="../imagenes/utileria/comprobado.png"/>Agregar</button><br>'+
+                            '<button class="botonAccion" id="botonAgregar" onclick="crearProducto();"><img id="imagenBoton" src="../imagenes/utileria/comprobado.png"/>Agregar</button><br>'+
                         '</div>';              
 
     let botonAgregar = document.getElementById('botonAgregar');
@@ -41,11 +41,11 @@ function mostrarPantallaEdicionProductos(){
     descripcionProducto.style.width = '28%';
     descripcionProducto.placeholder = 'descripcion del producto';
 
-    let proveedor = document.getElementById('comprador');
-    proveedor.style.marginLeft = '48%';
-    proveedor.style.marginTop = '6%';
-    proveedor.style.width = '28%';
-    proveedor.placeholder = 'id. Comprador';
+    let comprador = document.getElementById('comprador');
+    comprador.style.marginLeft = '48%';
+    comprador.style.marginTop = '6%';
+    comprador.style.width = '28%';
+    comprador.placeholder = 'id. Comprador';
 
     let titulo = document.getElementsByClassName('tituloColumna');
     titulo[0].style.position = 'fixed';
@@ -61,6 +61,6 @@ function mostrarPantallaEdicionProductos(){
     titulo[2].style.position = 'fixed';
     titulo[2].style.fontSize = '250%';
     titulo[2].style.zIndex = "1";
-    titulo[2].style.marginLeft = "55%";
+    titulo[2].style.marginLeft = "52%";
 
 }

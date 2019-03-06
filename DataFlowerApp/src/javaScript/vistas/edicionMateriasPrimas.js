@@ -13,7 +13,7 @@ function mostrarPantallaEdicionMateriasPrimas(){
                             '<input type="text" id="numeroMaterial" class="campoTexto">'+
                             '<input type="text" id="descripcionMaterial" class="campoTexto">'+
                             '<input type="text" id="metricaMaterial" class="campoTexto">'+
-                            '<button class="botonAccion" id="botonAgregar"><img id="imagenBoton" src="../imagenes/utileria/comprobado.png"/>Agregar</button><br>'+
+                            '<button class="botonAccion" id="botonAgregar" onclick="crearMateriaPrima();"><img id="imagenBoton" src="../imagenes/utileria/comprobado.png"/>Agregar</button><br>'+
                         '</div>';
 
     let botonAgregar = document.getElementById('botonAgregar');
